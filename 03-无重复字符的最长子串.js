@@ -30,7 +30,10 @@
  * @param {string} s
  * @return {number}
  */
+// 双指针写法
  var lengthOfLongestSubstring = function(s) {
+    // left 第一个指针
+    // right 第二指针，先走
     let left = right = length = maxLength = 0;
     let set = new Set()
     while(right<s.length){
