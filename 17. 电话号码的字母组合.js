@@ -62,3 +62,5 @@ function f(idx, cur, table, digits, res) {
         console.log(cur,'后')
     }
 }
+
+letterCombinations('23')
