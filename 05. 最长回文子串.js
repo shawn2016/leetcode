@@ -29,15 +29,15 @@ var longestPalindrome = function (s) {
     // 对于每个位置的子串寻找最长回文子串
     for (let i = 0; i < s.length; i++) {
         // 对于奇数串，返回每个位置的最长回文子串
-        let s1 = p(s, i, i);
+        let s1 = p(i, i);
         // 对于偶数串，返回每个位置的最长回文子串
-        let s2 = p(s, i, i + 1);
+        let s2 = p(i, i + 1);
         // 去检查每个位置的回文子串，找到那个最长的
         if (s1.length > substring.length) substring = s1
         if (s2.length > substring.length) substring = s2
     }
     // 通过这个函数去寻找以l、r为中心的回文子串
-    function p(s, l, r) {
+    function p(l, r) {
         // 这是一个循环移动l、r两个指针的过程。当l和r指向的字符相同时，就继续分别向左和向右移动指针，直到不满足条件。
         while (l >= 0 && r < s.length && s[l] === s[r]) {
             l--

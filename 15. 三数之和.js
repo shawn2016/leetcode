@@ -31,7 +31,7 @@
 var threeSum = function (nums) {
     const ans = []
     const n = nums.length;
-    if (nums == null || n < 3) return ans; // 根据题目所得
+    if (nums == null || n < 3) return []; // 根据题目所得
     nums.sort((a, b) => a - b) // 先从小到大排序
     for (let i = 0; i < n; i++) {
         if (nums[i] > 0) break; // 如果当前数字大于0，因为排完序之后，第一个数是最小的数，三数之和一定大于0，所以结束循环
