@@ -32,35 +32,35 @@
  * @param {number[][]} prerequisites
  * @return {boolean}
  */
-var canFinish = function (numCourses, prerequisites) {
-    const nums = Array(numCourses).fill(0),
-        map = Array(numCourses),
-        queue = [];
-    for (let i = 0; i < prerequisites.length; i++) {
-        const [a, b] = prerequisites[i]
-        nums[a]++ // 入度+1
-        if (map[b]) map[b].push(a)
+ var canFinish = function (numCourses, prerequisites) {
+    const nums = Array(numCourses).fill(0); // 每一个课程的入度数量(入度数)
+    const map = Array(numCourses); // 当前课程有几门课程依赖它的(出度数)
+    const queue = []; // 入度为0的临时队列
+    for(let i=0;i<prerequisites.length;i++){
+        const [a,b] = prerequisites[i]
+        nums[a]++ // 因为a有依赖b 所以对应的入度数+1
+        if(map[b]) map[b].push(a) 
         else map[b] = [a]
     }
-    // 找出入度为0的课程 并放入队列中
-    for (let i = 0; i < numCourses; i++) {
-        if (nums[i] === 0) {
+    // 找出入度为0的放进queue队列中
+    for(let i=0;i<numCourses;i++){
+        if(nums[i]===0){
             queue.push(i)
         }
     }
-    let count = 0
-    while (queue.length) {
-        const cur = queue.shift(),
-            list = map[cur]
-        count++
-        if (list) {
-            for (let i = 0; i < list.length; i++) {
-                nums[list[i]]--
-                if (nums[list[i]] === 0) {
-                    queue.push(list[i])
-                }
+    let count = 0 // 修课程的数量
+    while(queue.length){
+        const cur = queue.shift(); // 拿出当前修的课程
+        const list = map[cur] // 获取依赖它的课程
+        count++ // 拿出入度为0的值 说明已经休完了
+        if(list){
+            for(let i =0;i<list.length;i++){
+                nums[list[i]]-- // 修完当前的课程，依赖它的课程入度-- 所以是nums
+                if(nums[list[i]]===0) queue.push(list[i])
+ 
             }
         }
+ 
     }
     return count === numCourses
-}
+ }
