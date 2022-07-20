@@ -41,4 +41,4 @@ var maxSubArray = function (nums) {
         min = Math.min(min, sum)
     }
     return max
-}
+} 

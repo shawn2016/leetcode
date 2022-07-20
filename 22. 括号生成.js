@@ -22,6 +22,7 @@
 * @return {string[]}
 b站视频：https://www.bilibili.com/video/BV1Vg4y1q7Kv?spm_id_from=333.337.search-card.all.click&vd_source=361cd16b705667f69fbaf20260b48fe7
 */
+// 回溯
 var generateParenthesis = function (n) {
     const res = [] // 用数组存储结果
     function dfs(l, r, str) {
